@@ -1,0 +1,2 @@
+class BadCustomerLastname(Exception):
+    pass
