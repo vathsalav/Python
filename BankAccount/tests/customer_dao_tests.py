@@ -3,16 +3,18 @@ from dal_layer.customer_dao_imp import CustomerDAOImp
 from entities.customer import Customer
 
 customer_dao = CustomerDAOImp()
+test_customer = Customer(1, "Vathsala", "Vijay")
+test_customer = Customer(1, "Sam", "Sund")
 
 
 def test_create_customer_success():
-    test_customer = Customer(1, "Vathsala", "Vijay")
+
     result = customer_dao.create_customer(test_customer)
     assert result.customer_id != 0
 
 
 def test_catch_non_unique_id():
-    test_customer = Customer(1, "Sam", "Sund")
+
     result = customer_dao.create_customer(test_customer)
     assert result.customer_id != 1
 

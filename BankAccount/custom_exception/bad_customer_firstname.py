@@ -1,2 +1,0 @@
-class BadCustomerFirstname(Exception):
-    pass

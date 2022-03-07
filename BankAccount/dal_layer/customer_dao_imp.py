@@ -7,13 +7,13 @@ from entities.customer import Customer
 
 
 class CustomerDAOImp(CustomerDAOInterface, ABC):
-    #customers_list = []
-    #id_generator = 2
+    customers_list = []
+    id_generator = 2
 
     def __init__(self):
         customer_needed_for_id_catch = Customer(1, "Vathsala", "Vijay")
-        self.customers_list = []
-        self.id_generator = 2
+        self.first_name = customer_needed_for_id_catch.first_name
+        self.last_name = customer_needed_for_id_catch.last_name
         self.customers_list.append(customer_needed_for_id_catch)
 
     def create_customer(self, customer: Customer) -> Customer:

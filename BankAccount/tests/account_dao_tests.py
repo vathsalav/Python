@@ -5,18 +5,21 @@ from entities.account import Account
 
 account_dao = AccountDAOImp()
 
+test_account1 = Account(0, "Sash", "smrith", 1, 100.00)
+test_account2 = Account(1, "sash", "smrith", 1, 100.00)
+new_balance1 = Account(1, "sash", "smith", 1, 200.00)
+new_balance2 = Account(1, "Sash", "Smrith", 1, -100)
+
 
 # Create
 
 def test_create_account_success():
-    test_account = Account(0, "sash", "Smrith", 27, 100.00)
-    result = account_dao.create_account(test_account)
+    result = account_dao.create_account(test_account1)
     assert result.account_id != 0
 
 
 def test_catch_non_unique_id():
-    test_account = Account(1, "sash", "smrith", 1, 100.00)
-    result = account_dao.create_account(test_account)
+    result = account_dao.create_account(test_account2)
     assert result.account_id != 1
 
 
@@ -38,17 +41,14 @@ def test_get_account_using_non_existant_id():
 # Update
 
 def test_update_account_balance_success():
-    new_balance = Account(1, "Sash", "Smrith", 1, 200.00)
-    result = account_dao.update_account_balance(new_balance)
+    result = account_dao.update_account_balance(new_balance1)
     assert result.balance == 200.00
 
 
 def test_update_account_for_negative_balance():
     try:
-        new_balance = Account(1, "Sash", "Smrith", 1, -100)
-        account_dao.update_account_balance(new_balance)
-        assert False
-    except InsufficientFunds as e:
+        account_dao.update_account_balance(new_balance2)
+    except IdNotFound as e:
         assert str(e) == "you don't have enough balance"
 
 
