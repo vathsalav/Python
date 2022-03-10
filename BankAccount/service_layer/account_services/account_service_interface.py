@@ -16,15 +16,15 @@ class AccountServiceInterface(ABC):
 
     # update
     @abstractmethod
-    def deposit_service_update_account(self, account_id: int, deposit_amount: float, balance: float) -> Account:
+    def deposit_service_update_account(self, account_id: int, deposit_amount: float) -> float:
         pass
 
     @abstractmethod
-    def withdrawal_service_update_account(self, account_id: int, withdrawal_amount: float, balance: float) -> Account:
+    def withdrawal_service_update_account(self, account_id: int, withdrawal_amount: float) -> float:
         pass
 
     @abstractmethod
-    def transfer_service_update_account(self, account_id: int, transfer_account_id: int, transfer_amount: float) -> Account:
+    def transfer_service_update_account(self, account_id: int, transfer_account_id: int, transfer_amount: float) -> float:
         pass
 
     # delete

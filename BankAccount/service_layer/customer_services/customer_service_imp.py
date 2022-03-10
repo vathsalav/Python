@@ -21,12 +21,7 @@ class CustomerServiceImp(CustomerServiceInterface, ABC):
             raise BadCustomerName("First name too long")
         elif len(customer.last_name) > 20:
             raise BadCustomerName("Last name too long")
-
-        # elif type(customer.last_name) != str:
-        #     raise BadCustomerLastname("Please enter a valid Lastname")
-        # elif len(customer.last_name) > 20:
-        #     raise BadCustomerLastname("Please enter a valid Lastname")
-        return self.customer_dao.create_customer(customer)
+            return self.customer_dao.create_customer(customer)
 
     def service_delete_customer_by_id(self, customer_id: int) -> bool:
         if type(customer_id) == int:

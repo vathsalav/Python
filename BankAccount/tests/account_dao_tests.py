@@ -5,10 +5,10 @@ from entities.account import Account
 
 account_dao = AccountDAOImp()
 
-test_account1 = Account(0, "Sash", "smrith", 1, 100.00)
-test_account2 = Account(1, "sash", "smrith", 1, 100.00)
-new_balance1 = Account(1, "sash", "smith", 1, 200.00)
-new_balance2 = Account(1, "Sash", "Smrith", 1, -100)
+test_account1 = Account(0, "Sash", "smrth", 1, 100.00)
+test_account2 = Account(1, "sash", "srith", 2, 100.00)
+test_account3 = Account(1, "sash", "smith", 1, 200.00)
+test_account4= Account(1, "Sash", "Smrith", 1, -100)
 
 
 # Create
@@ -41,13 +41,13 @@ def test_get_account_using_non_existant_id():
 # Update
 
 def test_update_account_balance_success():
-    result = account_dao.update_account_balance(new_balance1)
+    result = account_dao.update_account_balance(test_account3)
     assert result.balance == 200.00
 
 
 def test_update_account_for_negative_balance():
     try:
-        account_dao.update_account_balance(new_balance2)
+        account_dao.update_account_balance(test_account4)
     except IdNotFound as e:
         assert str(e) == "you don't have enough balance"
 
